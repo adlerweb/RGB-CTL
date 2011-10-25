@@ -8,7 +8,7 @@
             Markus Schatzl
     RGB-Stuff based on:
         moodlamp-rf - fnordlicht firmware next generation
-             Alexander Neumann <alexander@bumpern.de>
+            Alexander Neumann <alexander@bumpern.de>
             Lars Noschinski <lars@public.noschinski.de>
             Kiu
             Mazzoo
