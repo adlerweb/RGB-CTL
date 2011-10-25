@@ -13,7 +13,7 @@
             Kiu
             Mazzoo
             Tobias Schneider(schneider@blinkenlichts.net)
-            Soft-PWM - http://www.mikrocontroller.net/articles/Soft-PWM
+        Soft-PWM - http://www.mikrocontroller.net/articles/Soft-PWM
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 2 as
@@ -70,7 +70,7 @@ uint8_t  fade[3]   = {0,0,0};                   //Color fade delay
 uint8_t  target[3] = {0,0,0};                   //Target color
 uint8_t  color[3]  = {0,0,0};                   //Active color
 uint16_t colort[3] = {0,0,0};                   //Timer compare for active color
-volatile uint8_t pwmstate=0;                   //Used to detect a completed PWM-Cycle
+volatile uint8_t pwmstate=0;                    //Used to detect a completed PWM-Cycle
 volatile uint16_t pwm_cnt=0;                    //PWM-Cycle counter
 
 ISR(TIMER1_COMPA_vect) {
@@ -139,19 +139,19 @@ int main(void)
     uint8_t i=0;                                    //Color processing loop temp storage
 
     static const uint16_t timeslot_table[] PROGMEM =
-    { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 9, 10, 10, 11, 11, 11, 12, 13, 13, 14, 14, 15, 16, 16, 17, 18, 19, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 34, 35, 37, 39, 40, 42, 44, 46, 48, 50, 52, 55, 57, 60, 62, 65, 68, 71, 74, 77, 81, 84, 88, 92, 96, 100, 105, 109, 114, 119, 125, 130, 136, 142, 148, 155, 161, 169, 176, 184, 192, 200, 209, 219, 228, 238, 249, 260, 272, 284, 296, 309, 323, 337, 352, 368, 384, 401, 419, 437, 457, 477, 498, 520, 543, 567, 592, 618, 646, 674, 704, 735, 768 }; //Werte 0 - 170
+    { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 9, 10, 10, 11, 11, 11, 12, 13, 13, 14, 14, 15, 16, 16, 17, 18, 19, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 34, 35, 37, 39, 40, 42, 44, 46, 48, 50, 52, 55, 57, 60, 62, 65, 68, 71, 74, 77, 81, 84, 88, 92, 96, 100, 105, 109, 114, 119, 125, 130, 136, 142, 148, 155, 161, 169, 176, 184, 192, 200, 209, 219, 228, 238, 249, 260, 272, 284, 296, 309, 323, 337, 352, 368, 384, 401, 419, 437, 457, 477, 498, 520, 543, 567, 592, 618, 646, 674, 704, 735, 768 };                        //Values 0 - 170
 
     cli();                                          //Disable interrupts
     wdt_enable(WDTO_500MS);                         //Enable Watchdog
 
-    DDRB = 0xFF;                                    //Port als Ausgang
-    PORTB = 0x00;                                   //LEDs aus
+    DDRB = 0xFF;                                    //Port = out
+    PORTB = 0x00;                                   //LEDs off
 
     usiTwiSlaveInit(SLAVE_ADDR_ATTINY);             //TWI slave init
 
-    sbi(TCCR1,CS10);                                //Timer ohne Prescaler
-    OCR1A = 128;                                    //PWM-Takt
-    TIMSK |= (1<<OCIE1A);                           //Interrupt freischalten*/
+    sbi(TCCR1,CS10);                                //Timer without Prescaler
+    OCR1A = 128;                                    //PWM-Clock
+    TIMSK |= (1<<OCIE1A);                           //Enable T1 Compare Interrupt
 
     sei();                                          //Enable Interrupts
     while(1) {
@@ -177,7 +177,7 @@ int main(void)
 
         wdt_reset();
 
-        pwm_update(); //Controller waits there until one PWM-cycle has completed
+        pwm_update();                               //Controller waits there until one PWM-cycle has completed
     }
 }
 
