@@ -1,0 +1,25 @@
+Partlist
+
+Exported from ledbrd.brd at 05.11.11 21:15
+
+EAGLE Version 5.11.0 Copyright (c) 1988-2010 CadSoft
+
+Part     Value          Package     Library   Position (mm)         Orientation
+
+B        B              2,54/1,1    wirepad   (27.44 3.08)          MR0
+C1       100n           C1206       rcl       (20.18 8.84)          MR180
+C2       220µF          153CLV-0605 rcl       (6 7.5)               MR270
+G        G              2,54/1,1    wirepad   (27.44 19.59)         R0
+IC1      TINY25P        DIL08       atmel     (14.74 15.78)         R180
+Q1       IRF7103        SO8-2       irf-2     (19.82 26.575)        MR90
+Q2       IRF7103        SO8-2       irf-2     (5.85 14.51)          MR270
+R        R              2,54/1,1    wirepad   (22.995 19.59)        R0
+R1       4.7            0414V       rcl       (27.44 9.43)          R270
+R2       4.7            0414V       rcl       (27.44 24.67)         R270
+R3       8.2            0414V       rcl       (5.85 23.4)           R0
+R4       100k           R1206       rcl       (6.85 19.59)          MR0
+R5       100k           R1206       rcl       (12.835 27.845)       MR180
+R6       100k           R1206       rcl       (3.62 25.845)         MR180
+R7       10k            R1206       rcl       (21.09 13.24)         MR90
+VCC      VCC            2,54/1,1    wirepad   (22.36 3.08)          MR0
+X1                      22-23-2041  con-molex (14.74 3.08)          R0
